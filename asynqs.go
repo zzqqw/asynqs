@@ -11,33 +11,6 @@ type HandleFunc struct {
 	HandleFunc func(context.Context, *asynq.Task) error
 }
 
-type RedisConfig struct {
-	Redis  asynq.RedisClientOpt
-	Config asynq.Config
-}
-
-func (r *RedisConfig) Asynqs() *Asynqs {
-	return New(r.Redis, r.Config)
-}
-
-type RedisFailoverConfig struct {
-	Redis  asynq.RedisFailoverClientOpt
-	Config asynq.Config
-}
-
-func (r *RedisFailoverConfig) Asynqs() *Asynqs {
-	return New(r.Redis, r.Config)
-}
-
-type RedisClusterConfig struct {
-	Redis  asynq.RedisClusterClientOpt
-	Config asynq.Config
-}
-
-func (r *RedisClusterConfig) Asynqs() *Asynqs {
-	return New(r.Redis, r.Config)
-}
-
 type Asynqs struct {
 	client     *asynq.Client
 	srv        *asynq.Server
